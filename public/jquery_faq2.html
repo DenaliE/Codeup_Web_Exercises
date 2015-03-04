@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	.invisible {
+		display: none;
+	}
+
+	#div {
+		border: 5px solid red;
+	}
+	</style>
+</head>
+<body>
+<h1>FAQ about Food</h1>
+<dl>
+	<dt >When is it ready?</dt>
+	<dd  class ='invisible'>When are you making it?</dd>
+	<dt>What are we having?</dt>
+	<dd class ='invisible'>What do you feel like?</dd>
+	<dt>Is this my hair?</dt>
+	<dd class ='invisible'>No.</dd>
+	<dt>Is this high in calories?</dt>
+	<dd class ='invisible'>Yes</dd>
+	<dt>Can I have some?</dt>
+	<dd class ='invisible'>Sure.</dd>
+	<dt>Are you hungry?</dt>
+	<dd class ='invisible'>Yes.</dd>
+	<dt>Do you like spicy food?</dt>
+	<dd class ='invisible'>Not too spicy.</dd>
+	<dt>Do you want more?</dt>
+	<dd class ='invisible'>No thanks.</dd>
+	<dt>Do you want fries with that?</dt>
+	<dd class ='invisible'>No.</dd>
+	<dt>Do you like Thai food?</dt>
+	<dd class ='invisible'>Yes.</dd>
+</dl>
+
+<div id='div'>
+<ul>
+<li>dfgsdf</li>
+<li>sdf</li>
+</ul>
+
+<ul>
+<li>sfsf</li>
+<li>sfs</li>
+</ul>
+</div>
+<a href="#" id="link">Click here to make visible.</a>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+	$('document').ready(function() {
+
+	            $('dt').click(function() {
+	    
+	                $('dd').toggle();
+	         });
+
+	          $('li').click(function(event) {
+	    			event.preventDefault();
+	                $(this).parents('div').hide();
+	         });  
+
+	});
+
+// </script>
+</body>
+</html>

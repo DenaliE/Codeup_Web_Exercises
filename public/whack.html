@@ -1,0 +1,178 @@
+<html>
+<head>
+	<title>Peanutbutter Jelly Time</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<style type="text/css">
+
+	body{
+		background-color: #d2b48c;
+		background-image: url("images/background.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		cursor: url(images/pb.jpg), default;
+	}
+	.gameboard {
+		width: 75%;
+		margin-top: 40px;
+	}
+
+	.box {
+		/*border: solid red 1px;*/
+		height: 20%;
+	}
+
+	#firstrow {
+		height: 15%;
+	}
+
+	.box img {
+		height: 100%;
+		width: 80%;
+		display: none;
+		padding: 15px;
+	}
+
+	h1 {
+		text-align: center;
+		margin-top: 20px;
+		font-size: 60px;
+	}
+
+	#score, #counter {
+		font-size: 45px;
+		min-height: 50px;
+		min-width: 50px;
+		padding: 0;
+		text-align: center;
+	}
+
+	button {
+		min-height: 90px;
+		min-width: 250px;
+		cursor: url(images/pb.jpg), default;
+		font-size: 40px;
+	}
+
+	h2, .audio {
+		margin: auto 0;
+		text-align: center;
+	}
+
+	.audio {
+		margin: 20px;
+	}
+
+</style>
+</head>
+<body>
+<h1>Peanutbutter Jelly Time</h1>
+<div class="audio">
+<audio class="audio" controls preload="none">
+	<source src="pb.mp3" type="audio/mpeg">
+</audio>
+</div>
+<div class="container-fluid gameboard">
+<div class="row-fluid" id="firstrow">
+		  <div class="col-xs-4 box">
+		  	<button class ="btn-primary btn-lg btn-danger">START</button>
+		  </div>
+		  <div class="col-xs-4 box">
+		  	<h2>TIMER:  </h2>
+		  	<div id="counter"></div>
+		  </div>
+	  	<div class="col-xs-4 box">
+	  		<h2>SCORE:  </h2>
+	  		<div id="score"></div>
+	  	</div>
+	</div>
+	<div class="row-fluid">
+		  <div class="col-xs-4 box">
+		  	<img class="img-responsive banana" src="images/dog.png">
+		  </div>
+		  <div class="col-xs-4 box">
+		  	<img class="img-responsive banana" src="images/download.gif">
+		  </div>
+	  	<div class="col-xs-4 box">
+	  		<img class="img-responsive banana" src="images/download.gif">
+	  	</div>
+	</div>
+	<div class="row-fluid">
+	  <div class="col-xs-4 box">
+	  	<img class="img-responsive banana" src="images/download.gif">
+	  </div>
+	  <div class="col-xs-4 box">
+	  	<img class="img-responsive banana" src="images/jars.png">
+	  </div>
+	  <div class="col-xs-4 box">
+	  	<img class="img-responsive banana" src="images/giphy.gif">
+	  </div>
+	</div>
+<div class="row-fluid">
+  	<div class="col-xs-4 box">
+  		<img class="img-responsive banana" src="images/download.gif">
+  	</div>
+  <div class="col-xs-4 box">
+  	<img class="img-responsive banana" src="images/giphy.gif">
+  </div>
+  <div class="col-xs-4 box">
+  	<img class="img-responsive banana" src="images/download.gif">
+  </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+$('document').ready(function() {
+
+	var counter = 24;
+	var interval = 1000;
+	var banana = $('.banana');
+	var score = 10;
+
+	$('button').on("click", function(){
+
+	    setInterval(function() {
+
+	    	// Fadde all bananas.!
+			$('.banana').fadeOut();
+
+		    if (counter == 0) {
+		    	//end game
+		    	clearInterval(interval);
+			}
+
+			else {
+
+				var rand = Math.floor((Math.random()* banana.length));
+				var randImg = banana[rand];
+
+				$(randImg).fadeIn(350);
+				$(randImg).off();
+
+			    counter--;
+
+		    	//toggle on and off
+		        $(randImg).click(function() {
+
+		        	$(this).fadeOut();
+		        	//keep score
+		        	$('#score').html(score);
+		        	 score += 10;
+		        });
+
+			    //show timer
+			    $('#counter').html(counter);
+			}
+
+
+	    }, interval);
+
+	});
+});
+
+
+	// </script>
+</body>
+</html>
